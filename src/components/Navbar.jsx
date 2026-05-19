@@ -24,17 +24,12 @@ const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center gap-8">
-          <a href="#services" className="text-sm font-medium hover:text-blue-400 transition-colors">Services</a>
-          <a href="#starlink" className="text-sm font-medium hover:text-blue-400 transition-colors">Starlink Solutions</a>
           <a href="#about" className="text-sm font-medium hover:text-blue-400 transition-colors">About Us</a>
-          <a href="#contact" className="text-sm font-medium hover:text-blue-400 transition-colors">Contact</a>
+          <a href="#services" className="text-sm font-medium hover:text-blue-400 transition-colors">Services</a>
+          <a href="#contact" className="text-sm font-medium hover:text-blue-400 transition-colors">Get Connected</a>
         </div>
 
-        <div>
-          <a href="#contact" className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(37,99,235,0.6)]">
-            Get Connected
-          </a>
-        </div>
+
       </div>
     </nav>
   );

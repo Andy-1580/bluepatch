@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div id="about" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -21,19 +21,11 @@ const Hero = () => {
               Experience the future of connectivity with our cutting-edge Starlink deployments, WiMAX, and dedicated enterprise solutions. Fast, reliable, and available across all 47 counties.
             </p>
             
-            {/* Quick Lead Bar */}
-            <form className="bg-[#111827]/80 backdrop-blur-md p-2 rounded-2xl border border-slate-700/50 flex flex-col sm:flex-row gap-2 max-w-xl shadow-2xl">
-              <input type="text" placeholder="Location (e.g. Nairobi)" className="bg-transparent border-none focus:ring-0 text-white placeholder-slate-400 px-4 py-3 flex-1" />
-              <input type="tel" placeholder="Phone Number" className="bg-transparent border-none focus:ring-0 text-white placeholder-slate-400 px-4 py-3 flex-1 border-t sm:border-t-0 sm:border-l border-slate-700/50" />
-              <button type="submit" className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-xl transition-colors shrink-0">
-                Check Coverage
-              </button>
-            </form>
           </div>
           
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1c] via-transparent to-transparent z-10"></div>
-            <img src="https://images.unsplash.com/photo-1620286828945-8f5539ab4ea0?auto=format&fit=crop&q=80" alt="Satellite Dish" className="rounded-2xl border border-slate-800 shadow-[0_0_50px_rgba(37,99,235,0.15)] relative z-0 object-cover w-full h-[500px]" />
+            <img src="/starlink-dish.jpg" alt="Starlink Dish" className="rounded-2xl border border-slate-800 shadow-[0_0_50px_rgba(37,99,235,0.15)] relative z-0 object-cover w-full h-[500px]" />
           </div>
         </div>
       </div>

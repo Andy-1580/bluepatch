@@ -31,7 +31,8 @@ const LeadForm = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-white text-lg">Sales & Support</h4>
-                  <p className="text-slate-400">+254 (0) 700 000 000</p>
+                  <p className="text-slate-400">0116 444 443</p>
+                  <p className="text-slate-400">sales@bluepatchventures.co.ke</p>
                 </div>
               </div>
               
@@ -43,7 +44,8 @@ const LeadForm = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-white text-lg">Email Us</h4>
-                  <p className="text-slate-400">info@bluepatch.co.ke</p>
+                  <p className="text-slate-400">bluepatchventuresltd@gmail.com</p>
+                  <p className="text-slate-400">support@bluepatchventures.co.ke</p>
                 </div>
               </div>
             </div>
