@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  
+  --color-bluepatch-dark: #0a0f1c;
+  --color-bluepatch-navy: #111827;
+  --color-bluepatch-blue: #2563eb;
+  --color-bluepatch-light-blue: #60a5fa;
+  --color-bluepatch-glow: rgba(37, 99, 235, 0.5);
+}
+
+body {
+  background-color: var(--color-bluepatch-dark);
+  color: #f8fafc;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Glow effects */
+.glow-text {
+  text-shadow: 0 0 10px var(--color-bluepatch-glow);
+}
+
+.glow-box {
+  box-shadow: 0 0 20px var(--color-bluepatch-glow);
+}
