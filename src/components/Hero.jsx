@@ -1,4 +1,5 @@
 import React from 'react';
+import starlinkDish from '../assets/starlink-dish.jpg';
 
 const Hero = () => {
   return (
@@ -25,7 +26,7 @@ const Hero = () => {
           
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1c] via-transparent to-transparent z-10"></div>
-            <img src="/starlink-dish.jpg" alt="Starlink Dish" className="rounded-2xl border border-slate-800 shadow-[0_0_50px_rgba(37,99,235,0.15)] relative z-0 object-cover w-full h-[500px]" />
+            <img src={starlinkDish} alt="Starlink Satellite Dish" className="rounded-2xl border border-slate-800 shadow-[0_0_50px_rgba(37,99,235,0.15)] relative z-0 object-cover w-full h-[500px]" />
           </div>
         </div>
       </div>
