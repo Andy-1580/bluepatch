@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
 
 /* ─── Contact info data ───────────────────────────────────────────── */
 const CONTACT_ITEMS = [
@@ -47,7 +48,6 @@ const Spinner = () => (
   </svg>
 );
 
-import { supabase } from '../lib/supabaseClient';
 
 /* ─── Main component ─────────────────────────────────────────────── */
 const LeadForm = () => {
