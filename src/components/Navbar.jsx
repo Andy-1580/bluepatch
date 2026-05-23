@@ -33,12 +33,15 @@ const Navbar = () => {
     >
       <div className="section-container flex items-center justify-between">
         {/* Logo */}
-        <a href="/" aria-label="BluePatch Home">
+        <a href="/" aria-label="BluePatch Home" className="flex items-center gap-3">
           <img
             src={bluepatchLogo}
-            alt="BluePatch Ventures Limited"
+            alt="BluePatch logo"
             className="h-10 sm:h-12 w-auto object-contain"
           />
+          <span className="font-heading font-bold text-xl sm:text-2xl tracking-wide hidden min-[360px]:block">
+            BluePatch <span className="text-blue-500">Ventures</span>
+          </span>
         </a>
 
         {/* Desktop nav */}
