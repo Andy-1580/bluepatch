@@ -47,14 +47,66 @@ const Spinner = () => (
   </svg>
 );
 
+import { supabase } from '../lib/supabaseClient';
+
 /* ─── Main component ─────────────────────────────────────────────── */
 const LeadForm = () => {
-  const [status, setStatus] = useState('idle'); // idle | loading | success
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [errorMessage, setErrorMessage] = useState('');
+  
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    location: '',
+    service: 'Starlink Deployment',
+    message: ''
+  });
 
-  const handleSubmit = (e) => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => setStatus('success'), 1500);
+    setErrorMessage('');
+    
+    // Format contact_info to optionally include the message
+    let contactInfo = formData.phone;
+    if (formData.message && formData.message.trim() !== '') {
+      contactInfo += ` | Message: ${formData.message}`;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .insert([
+          {
+            name: formData.name,
+            contact_info: contactInfo,
+            location: formData.location,
+            requested_service: formData.service,
+          }
+        ]);
+
+      if (error) throw error;
+      
+      setStatus('success');
+      // Reset form
+      setFormData({
+        name: '',
+        phone: '',
+        location: '',
+        service: 'Starlink Deployment',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error submitting lead:', error);
+      setStatus('error');
+      setErrorMessage('Something went wrong. Please try again or contact us directly.');
+    }
   };
 
   return (
@@ -95,22 +147,27 @@ const LeadForm = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
+                {status === 'error' && (
+                  <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm">
+                    {errorMessage}
+                  </div>
+                )}
                 <div className="grid sm:grid-cols-2 gap-5">
                   <FormField label="Full Name">
-                    <input required type="text" className="bp-input" placeholder="John Doe" />
+                    <input required name="name" value={formData.name} onChange={handleInputChange} type="text" className="bp-input" placeholder="John Doe" />
                   </FormField>
                   <FormField label="Phone Number">
-                    <input required type="tel" className="bp-input" placeholder="0712 345 678" />
+                    <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="bp-input" placeholder="0712 345 678" />
                   </FormField>
                 </div>
 
                 <FormField label="Location / County">
-                  <input required type="text" className="bp-input" placeholder="e.g. Westlands, Nairobi" />
+                  <input required name="location" value={formData.location} onChange={handleInputChange} type="text" className="bp-input" placeholder="e.g. Westlands, Nairobi" />
                 </FormField>
 
                 <FormField label="Service of Interest">
-                  <select className="bp-input appearance-none">
+                  <select name="service" value={formData.service} onChange={handleInputChange} className="bp-input appearance-none">
                     <option>Starlink Deployment</option>
                     <option>Enterprise Fixed Wireless</option>
                     <option>Home Internet</option>
@@ -119,7 +176,7 @@ const LeadForm = () => {
                 </FormField>
 
                 <FormField label="Message (Optional)">
-                  <textarea rows={4} className="bp-input resize-none" placeholder="Any specific requirements?" />
+                  <textarea name="message" value={formData.message} onChange={handleInputChange} rows={4} className="bp-input resize-none" placeholder="Any specific requirements?" />
                 </FormField>
 
                 <button
