@@ -3,16 +3,18 @@
 @theme {
   --font-sans: "Inter", sans-serif;
   --font-heading: "Space Grotesk", sans-serif;
-  
-  --color-bluepatch-dark: #0a0f1c;
-  --color-bluepatch-navy: #111827;
-  --color-bluepatch-blue: #2563eb;
-  --color-bluepatch-light-blue: #60a5fa;
-  --color-bluepatch-glow: rgba(37, 99, 235, 0.5);
+
+  --color-bp-dark: #0a0f1c;
+  --color-bp-navy: #0d1324;
+  --color-bp-card: #111827;
+  --color-bp-blue: #2563eb;
+  --color-bp-blue-hover: #3b82f6;
+  --color-bp-glow: rgba(37, 99, 235, 0.5);
 }
 
+/* Base */
 body {
-  background-color: var(--color-bluepatch-dark);
+  background-color: var(--color-bp-dark);
   color: #f8fafc;
   font-family: var(--font-sans);
 }
@@ -21,11 +23,55 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
+/* Reusable utilities */
+.section-container {
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section-heading {
+  @apply text-3xl md:text-4xl font-bold font-heading mb-4 text-white;
+}
+
+.section-subtext {
+  @apply text-slate-400 max-w-2xl mx-auto leading-relaxed;
+}
+
 /* Glow effects */
 .glow-text {
-  text-shadow: 0 0 10px var(--color-bluepatch-glow);
+  text-shadow: 0 0 40px var(--color-bp-glow);
 }
 
 .glow-box {
-  box-shadow: 0 0 20px var(--color-bluepatch-glow);
+  box-shadow: 0 0 20px var(--color-bp-glow);
+}
+
+/* Card base */
+.bp-card {
+  @apply bg-[#111827] rounded-2xl border border-slate-800 p-6 md:p-8;
+}
+
+/* Form field base */
+.bp-input {
+  @apply w-full bg-[#0a0f1c] border border-slate-700 rounded-lg px-4 py-3 text-white
+    focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500
+    transition-colors placeholder:text-slate-500;
+}
+
+/* Primary button */
+.bp-btn-primary {
+  @apply bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl
+    transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] disabled:opacity-50
+    disabled:cursor-not-allowed;
+}
+
+/* Ghost button */
+.bp-btn-ghost {
+  @apply border border-slate-700 hover:border-slate-500 text-white px-6 py-2 rounded-lg
+    transition-colors;
+}
+
+/* Icon box shared style */
+.bp-icon-box {
+  @apply w-12 h-12 rounded-xl bg-blue-900/30 border border-blue-500/20
+    flex items-center justify-center shrink-0;
 }
