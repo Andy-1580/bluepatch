@@ -72,6 +72,16 @@ const LeadForm = () => {
     e.preventDefault();
     setStatus('loading');
     setErrorMessage('');
+
+    // Failsafe: if the Supabase client was not initialized (missing env vars in this
+    // deployment environment), degrade gracefully rather than throwing a TypeError.
+    if (!supabase) {
+      setStatus('error');
+      setErrorMessage(
+        'Our online form is temporarily unavailable. Please reach us directly at sales@bluepatchventures.co.ke or call 0116 444 443.'
+      );
+      return;
+    }
     
     // Format contact_info to optionally include the message
     let contactInfo = formData.phone;
